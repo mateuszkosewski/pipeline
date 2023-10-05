@@ -16,3 +16,12 @@ jobs:
 
       - name: Check composer version
         run: composer -v
+
+      - name: Check php version
+        run: php -v
+
+      - name: Check yarn version
+        run: yarn -v
+
+      - name: Check node version
+        run: node -v
