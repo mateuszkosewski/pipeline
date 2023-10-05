@@ -58,7 +58,7 @@ jobs:
         run: 'sudo service apache2 start && sudo service apache2 status'
 
       - name: Sio
-        run: 'cd /var/www && pwd && ls -l'
+        run: 'sudo bash script.sh ${GITHUB_WORKSPACE}'
 
       - name: Check php version
         run: php -v
