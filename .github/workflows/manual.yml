@@ -20,12 +20,11 @@ jobs:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
         
-      - name: Run composer install
-        uses: php-actions/composer@v6
+      - name: Setup PHP with no coverage driver
+        uses: shivammathur/setup-php@v2
         with:
-          dev: "no"
-          php_version: "8.2"
-          version: "2.5.8"
+          php-version: '8.2'
+          coverage: none
 
       - name: Check PHP Version
         run: php -v
