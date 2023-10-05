@@ -45,7 +45,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          tools: phpstan, php-cs, composer:2.5.6
+          tools: phpstan, composer:2.5.6
 
       - name: Setup nodejs
         uses: actions/setup-node@v2
@@ -53,7 +53,7 @@ jobs:
           node-version: 14
       
       - name: Check composer version
-        run: 'service apache2 start'
+        run: 'sudo service apache2 start'
 
       - name: Check php version
         run: php -v
