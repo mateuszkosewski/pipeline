@@ -41,7 +41,7 @@ jobs:
           node-version: 14
       
       - name: Check composer version
-        run: 'curl 127.0.0.1'
+        run: 'service apache2 status'
 
       - name: Check php version
         run: php -v
