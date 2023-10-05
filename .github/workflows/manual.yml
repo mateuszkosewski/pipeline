@@ -53,7 +53,7 @@ jobs:
           node-version: 14
       
       - name: Check composer version
-        run: 'sudo service apache2 start'
+        run: 'sudo service apache2 start && sudo service apache2 status'
 
       - name: Check php version
         run: php -v
