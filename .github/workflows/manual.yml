@@ -56,7 +56,7 @@ jobs:
         run: 'sudo service apache2 start && sudo service apache2 status'
 
       - name: Sio
-        run: 'pwd'
+        run: 'cd /var/www && pwd && ls -l'
 
       - name: Check php version
         run: php -v
