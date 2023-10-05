@@ -33,3 +33,6 @@ jobs:
 
       - name: Check composer version
         run: composer -v
+
+      - name: Check phpstan
+        run: vendor/bin/phpstan analyse index.php
