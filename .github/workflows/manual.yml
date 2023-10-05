@@ -55,6 +55,9 @@ jobs:
       - name: Check composer version
         run: 'sudo service apache2 start && sudo service apache2 status'
 
+      - name: Sio
+        run: 'curl 127.0.0.1'
+
       - name: Check php version
         run: php -v
 
