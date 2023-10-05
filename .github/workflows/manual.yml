@@ -23,10 +23,9 @@ jobs:
       - name: Run composer install
         uses: php-actions/composer@v6
         with:
-          dev: no
-          php_version: 8.2
-          version: 2.5.8
-          command: install
+          dev: "no"
+          php_version: "8.2"
+          version: "2.5.8"
 
       - name: Check PHP Version
         run: php -v
