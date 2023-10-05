@@ -30,9 +30,10 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           
       - name: Setup php
-        uses: actions/setup-php@v4
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          tools: phpstan, php-cs, composer:2.5.6
 
       - name: Setup nodejs
         uses: actions/setup-node@v2
