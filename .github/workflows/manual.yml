@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: '/var/www'
 
       - name: Cache Composer dependencies
         id: cache-composer
