@@ -53,10 +53,7 @@ jobs:
           node-version: 14
       
       - name: Check composer version
-        run: 'sudo service apache2 start && sudo service apache2 status'
-
-      - name: Sio
-        run: 'sudo bash script.sh ${GITHUB_WORKSPACE}'
+        run: 'sudo cp foo.conf /etc/apache2/sites-available/foo.conf && sudo service apache2 start'
 
       - name: Check php version
         run: php -v
