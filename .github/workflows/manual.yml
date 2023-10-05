@@ -8,12 +8,22 @@ jobs:
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
-
+    
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Setup php
+        uses: nanasess/setup-php@v4
+        with:
+          php-version: '8.2'
 
+      - name: Setup nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      
       - name: Check composer version
         run: composer -v
 
