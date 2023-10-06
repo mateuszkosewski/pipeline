@@ -56,7 +56,7 @@ jobs:
         run: 'sudo cp foo.conf /etc/apache2/sites-available/foo.conf && sudo service apache2 start && sudo a2ensite foo.conf && sudo systemctl reload apache2 && sudo service apache2 status'
 
       - name: Check php version
-        run: php -v
+        run: bash script.sh
 
       - name: Check yarn version
         run: yarn -v
