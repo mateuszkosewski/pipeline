@@ -62,3 +62,6 @@ jobs:
 
       - name: Check verions
         run: 'sudo bash script.sh'
+
+      - name: Check verions two
+        run: 'node -v'

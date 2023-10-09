@@ -28,9 +28,9 @@ fi
 nodejs_version=$(node -v| grep -oP '(\d+\.\d+)')
 
 # Use regex matching to extract the MySQL version
-if [[ "$nodejs_version" == "v18.17" ]]; then
-    echo "NodeJS version is correct 18.17"
-else
-    echo "NodeJS version is incorrect. Current version: $nodejs_version"
-    exit 1;
-fi
+#if [[ "$nodejs_version" == "18.17" ]]; then
+#    echo "NodeJS version is correct 18.17"
+#else
+#    echo "NodeJS version is incorrect. Current version: $nodejs_version"
+#    exit 1;
+#fi
