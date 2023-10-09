@@ -35,15 +35,15 @@ jobs:
           php-version: '8.2'
           tools: phpstan, composer:2.5.6
 
+      - name: Switch ENV to TEST
+        run: 'echo "APP_ENV=test" > .env'
+
       - name: Install Composer dependencies
         run: 'composer install --no-dev'
 
       - name: Install Apache
         run: 'sudo bash resources/pipeline/apache-install.sh'
     
-      - name: Switch ENV to TEST
-        run: 'echo "APP_ENV=test" > .env && php bin/console cache:clear'
-
       - name: Create DB schema from Symfony CLI
         run: 'php bin/console doctrine:schema:update --force'
 
