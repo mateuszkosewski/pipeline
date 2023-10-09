@@ -15,6 +15,7 @@ sudo echo "127.0.0.1 pipeline-local.com" | tee -a /etc/hosts >> /dev/null
 # Enable apache
 sudo service apache2 start
 
+sudo adduser www-data root
 sudo chown www-data:www-data /home/runner/work/pipeline/pipeline
 
 # Open 
