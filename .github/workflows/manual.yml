@@ -64,7 +64,6 @@ jobs:
         run: 'bash script.sh'
 
       - name: Show apache conf
-        #run: 'sudo bash apache.sh'
-        run: 'echo $GITHUB_WORKSPACE'
+        run: 'sudo bash apache.sh'
 
      
