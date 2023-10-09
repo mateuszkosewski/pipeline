@@ -1,14 +1,13 @@
 #!/bin/bash
 
-cat /etc/apache2/sites-available/000-default.conf
+# Add domain to sites available
+sudo cat foo.conf | tee -a /etc/apache2/sites-available/000-default.conf >> /dev/null
 
-# Overwrite sites-available
-#echo "content to append" >> [file_name]
+# Add domain to hosts
+sudo echo "127.0.0.1 pipeline-local.com" | tee -a /etc/hosts >> /dev/null
 
 # Enable apache
-#sudo service apache2 start
+sudo service apache2 start
 
 # Open 
- 
-#      - name: Check curl status code
-#        run: 'curl -s -o /dev/null -w "%{http_code}" http://cematic-local.vm/'
+curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com

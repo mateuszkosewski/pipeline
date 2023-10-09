@@ -1,5 +1,5 @@
+test
 <VirtualHost *:80>
-    ServerName pipeline-local.com
     DocumentRoot ${GITHUB_WORKSPACE}
     ErrorLog ${APACHE_LOG_DIR}/pipeline_error.log
     CustomLog ${APACHE_LOG_DIR}/pipeline_access.log combined
