@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo mkdir /var/www/pipeline
+
+echo '<?php phpinfo();' > /var/www/pipeline/index.php
+
 sudo cat apache.conf >> /etc/apache2/apache.conf
 
 # Add domain to sites available
@@ -10,8 +14,6 @@ sudo echo "127.0.0.1 pipeline-local.com" | tee -a /etc/hosts >> /dev/null
 
 # Enable apache
 sudo service apache2 start
-
-whoami
 
 # Open 
 curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
