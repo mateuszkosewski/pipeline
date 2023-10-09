@@ -19,4 +19,4 @@
 #curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
 #curl http://pipeline-local.com
 
-cd ${GITHUB_WORKSPACE} && ls -l
+cd /home/runner/work/pipeline/pipeline && ls -l
