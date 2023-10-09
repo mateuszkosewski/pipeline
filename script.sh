@@ -19,7 +19,7 @@ mysql_version=$(mysql --version | grep -oP '(?<=Ver )(\d+\.\d+)')
 if [[ "$mysql_version" == "8.0" ]]; then
     echo "MySQL version 8.0 is correct"
 else
-    echo "Unable to extract MySQL version."
+    echo "MySQL version is incorrect - current version $mysql_version"
     exit 1;
 fi
 
@@ -31,6 +31,6 @@ nodejs_version=$(node -v| grep -oP '(\d+\.\d+)')
 if [[ "$nodejs_version" == "v18.17" ]]; then
     echo "NodeJS version is correct 18.17"
 else
-    echo "Unable to extract NodeJS version."
+    echo "NodeJS version is incorrect. Current version: $nodejs_version"
     exit 1;
 fi
