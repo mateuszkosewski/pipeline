@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Install apache2 with php8.2
 sudo apt install libapache2-mod-php8.2
 sudo a2enmod php8.2
 
@@ -9,17 +10,20 @@ sudo cat foo.conf | tee -a /etc/apache2/sites-available/000-default.conf >> /dev
 # Add domain to hosts
 sudo echo "127.0.0.1 pipeline-local.com" | tee -a /etc/hosts >> /dev/null
 
+# Add chmod +x to working directory
 sudo chmod +x /home/runner/
 
+# Add conf to apache
 sudo cat apache.conf | tee -a /etc/apache2/apache2.conf >> /dev/null
 
+# Restart apache
 sudo service apache2 start
 
-# Open 
-curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
-curl http://pipeline-local.com
-
-#cat /var/log/apache2/error.log
-#cat /etc/apache2/apache2.conf
-
-#cd /home/runner/work/pipeline/pipeline && ls -l
+# Ping
+ping_status=$(curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com)
+if [[ ping_status == '200' ]]; then
+	echo 'Domain pipeline-local.com works!';
+else
+	echo 'Cannot connect to pipeline-local.com!';
+	exit 1;
+fi

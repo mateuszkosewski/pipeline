@@ -13,12 +13,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache Composer dependencies
-        id: cache-composer
-        uses: actions/cache@v3
+      - name: Install MySQL
+        uses: shogo82148/actions-setup-mysql@v1
         with:
-          path: /tmp/composer-cache
-          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+          mysql-version: "8.0"
+          root-password: 'root'
 
       - name: Setup PHP with Composer
         uses: shivammathur/setup-php@v2
@@ -26,23 +25,29 @@ jobs:
           php-version: '8.2'
           tools: phpstan, composer:2.5.6
 
-      - name: Check software versions
-        run: 'bash versions.sh'
+      - name: Install Apache
+        run: 'sudo bash resources/pipeline/apache-install.sh'
 
-      - name: Install MySQL
-        uses: shogo82148/actions-setup-mysql@v1
+      - name: Cache Composer dependencies
+        id: cache-composer
+        uses: actions/cache@v3
         with:
-          mysql-version: "8.1"
-          root-password: 'root'
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
-      - name: Create DB
+      - name: Create Database
         run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
 
       - name: Install Composer dependencies
-        run: 'composer install'
-      
-      - name: Install apache
-        run: 'sudo bash apache.sh'
+        run: 'composer install --no-dev'
 
-      - name: Check MySQL connection
-        run: 'php index.php'
+      - name: Switch ENV to TEST
+        run: 'echo "APP_ENV=test" > .env && php bin/console cache:clear'
+
+      - name: Create DB schema from Symfony CLI
+        run: 'php bin/console doctrine:schema:update --force'
+
+      - name: Cos
+        run: 'curl http://pipeline-local.com/product/1'
+
+
