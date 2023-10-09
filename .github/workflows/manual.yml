@@ -14,12 +14,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup MySQL
-        uses: mirromutth/mysql-action@v1.1
+        uses: shogo82148/actions-setup-mysql
         with:
-          mysql version: 5.7
-#          mysql database: 'pipeline'
-          mysql user: 'walsie'
-          mysql root password: 'root'
+          distribution: "mysql"
+          version: "5.7"
+          root-password: 'root'
+          user: 'developer'
+          password: 'password'
 
       - name: Start MySQL
         run: 'sudo service mysql start && sudo service mysql reload && mysql --version'
