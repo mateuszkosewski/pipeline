@@ -16,6 +16,9 @@ sudo echo "127.0.0.1 pipeline-local.com" | tee -a /etc/hosts >> /dev/null
 # Add domain to sites available
 sudo cat resources/pipeline/virtual-host.conf | tee -a /etc/apache2/sites-available/000-default.conf >> /dev/null
 
+# Enable mod-rewirte
+sudo a2enmod rewrite
+
 # Restart apache
 sudo service apache2 start
 
