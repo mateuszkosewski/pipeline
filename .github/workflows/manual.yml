@@ -39,30 +39,33 @@ jobs:
           php-version: '8.2'
           tools: phpstan, composer:2.5.6
 
-      - name: Setup MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql version: 8.0
-          mysql database: 'pipeline'
-          mysql root password: 'root'
-
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: 'sudo service mysql stop' 
-
-      - name: Start MySQL
-        run: 'sudo service mysql start && sudo mysql -u root -proot -e "show databases;"' 
-
       - name: Check software versions
         run: 'bash versions.sh'
 
-      - name: Install Composer dependencies
-        run: 'composer install'
-      
-      - name: Install apache
-        run: 'sudo bash apache.sh'
+      #- name: Setup MySQL
+      #  uses: mirromutth/mysql-action@v1.1
+      #  with:
+      #    mysql version: 8.0
+      #    mysql database: 'pipeline'
+      #    mysql root password: 'root'
 
-      - name: Check MySQL connection
-        run: 'php index.php'
+      #- name: Shutdown Ubuntu MySQL (SUDO)
+      #  run: 'sudo service mysql stop' 
+
+      #- name: Start MySQL
+      #  run: 'sudo service mysql start && sudo mysql -u root -proot -e "show databases;"' 
+
+      #- name: Check software versions
+      #  run: 'bash versions.sh'
+
+      #- name: Install Composer dependencies
+      #  run: 'composer install'
+      
+      #- name: Install apache
+      #  run: 'sudo bash apache.sh'
+
+      #- name: Check MySQL connection
+      #  run: 'php index.php'
 
       - name: Notify slack success
         if: success()
