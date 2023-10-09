@@ -48,7 +48,7 @@ jobs:
           mysql root password: 'root'
 
       - name: Start MySQL
-        run: 'sudo service mysql start && sudo mysql -u root'
+        run: 'sudo service mysql start' 
 
       - name: Check software versions
         run: 'bash versions.sh'
@@ -59,8 +59,8 @@ jobs:
       - name: Install apache
         run: 'sudo bash apache.sh'
 
-      #- name: Check MySQL connection
-      #  run: 'php index.php'
+      - name: Check MySQL connection
+        run: 'php index.php'
 
       - name: Notify slack success
         if: success()
@@ -68,7 +68,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          channel: app-alerts
+          channel: general
           status: SUCCESS
           color: good
 
@@ -78,7 +78,7 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
         uses: voxmedia/github-action-slack-notify-build@v1
         with:
-          channel: app-alerts
+          channel: general
           status: FAILED
           color: danger
 
