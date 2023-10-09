@@ -1,9 +1,9 @@
 #!/bin/bash
 
-mkdir /var/www/pipeline
-mv /home/runner/work/pipeline/pipeline /var/www/pipeline
+#mkdir /var/www/pipeline
+#mv /home/runner/work/pipeline/pipeline /var/www/pipeline
 
-ls -l /var/www/pipeline
+#ls -l /var/www/pipeline
 
 # Add domain to sites available
 #sudo cat foo.conf | tee -a /etc/apache2/sites-available/000-default.conf >> /dev/null
