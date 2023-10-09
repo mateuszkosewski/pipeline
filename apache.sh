@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo apt install libapache2-mod-php8.2
-sudo a2enmod php-8.2
+sudo a2enmod php8.2
 
 # Add domain to sites available
 sudo cat foo.conf | tee -a /etc/apache2/sites-available/000-default.conf >> /dev/null
