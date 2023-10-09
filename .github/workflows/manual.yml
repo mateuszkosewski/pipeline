@@ -22,7 +22,7 @@ jobs:
           password: 'password'
 
       - name: Walsiedwa
-        run: mysql -uroot -e 'SELECT User FROM mysql.user;'
+        run: mysql -uroot -proot -e 'SELECT User FROM mysql.user;'
 
       # - name: Setup MySQL
       #   uses: shogo82148/actions-setup-mysql@v1
