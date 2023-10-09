@@ -8,86 +8,13 @@ jobs:
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
-          
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Cache Composer dependencies
-        id: cache-composer
-        uses: actions/cache@v3
-        with:
-          path: /tmp/composer-cache
-          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-
-      - name: Setup PHP with Composer
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          tools: phpstan, composer:2.5.6
-
-      - name: Setup MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql version: 5.7
-          mysql database: 'pipeline'
-          mysql user: 'walsie'
-          mysql root password: 'root'
-
-      #- name: Check software versions
-      #  run: 'bash versions.sh'
-
-      #- name: Shutdown Ubuntu MySQL (SUDO)
-      #  run: 'sudo service mysql stop' 
-
-      - name: Start MySQL
-        run: 'sudo service mysql start && sudo mysql -u root -proot -e "SELECT User FROM mysql.user;"' 
-
-      - name: Start MySQL
-        run: 'mysql --version' 
-
-      #- name: Check software versions
-      #  run: 'bash versions.sh'
-
-      #- name: Install Composer dependencies
-      #  run: 'composer install'
-      
-      #- name: Install apache
-      #  run: 'sudo bash apache.sh'
-
-      #- name: Check MySQL connection
-      #  run: 'php index.php'
-
-      - name: Notify slack success
-        if: success()
+    services:
+      mysql:
+        image: mysql:5.7.43
         env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: general
-          status: SUCCESS
-          color: good
-
-      - name: Notify slack fail
-        if: failure()
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: general
-          status: FAILED
-          color: danger
-
-      #- name: Setup nodejs
-      #  uses: actions/setup-node@v3
-      #  with:
-      #    node-version: '18.17.1'
-
-      
-
-      #- name: Check verions
-      #  run: 'bash script.sh'
-
-      
-     
+          MYSQL_ALLOW_EMPTY_PASSWORD: no
+          MYSQL_DATABASE: pipeline
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
