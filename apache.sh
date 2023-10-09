@@ -2,9 +2,9 @@
 
 sudo mkdir /var/www/pipeline
 
-echo '<?php phpinfo();' > /var/www/pipeline/index.php
+#echo '<?php phpinfo();' > /var/www/pipeline/index.php
 
-sudo cat apache.conf >> /etc/apache2/apache.conf
+#sudo cat apache.conf >> /etc/apache2/apache.conf
 
 # Add domain to sites available
 sudo cat foo.conf | tee -a /etc/apache2/sites-available/000-default.conf >> /dev/null
@@ -18,3 +18,5 @@ sudo service apache2 start
 # Open 
 #curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
 curl http://pipeline-local.com
+
+cd ${GITHUB_WORKSPACE} && ls -l
