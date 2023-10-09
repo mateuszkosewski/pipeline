@@ -19,12 +19,12 @@ sudo adduser www-data root
 sudo chown www-data:www-data /home/runner/work/pipeline/pipeline/www
 sudo chmod 755 /home/runner/work/pipeline/pipeline/www
 
-sudo cat apache2.conf | tee -a /etc/apache2/apache2.conf >> /dev/null
+#sudo cat apache2.conf | tee -a /etc/apache2/apache2.conf >> /dev/null
 
 sudo service apache2 reload
 
 # Open 
-curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
-#curl http://pipeline-local.com
+#curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
+curl http://pipeline-local.com
 
 #cd /home/runner/work/pipeline/pipeline && ls -l
