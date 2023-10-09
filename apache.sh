@@ -13,4 +13,4 @@ sudo service apache2 start
 
 # Open 
 #curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
-curl http://pipeline-local.com
+curl http://pipeline-local.com/index.php
