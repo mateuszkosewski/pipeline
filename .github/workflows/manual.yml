@@ -64,6 +64,6 @@ jobs:
         run: 'bash script.sh'
 
       - name: Show apache conf
-        run: 'bash apache.sh'
+        run: 'sudo bash apache.sh'
 
      
