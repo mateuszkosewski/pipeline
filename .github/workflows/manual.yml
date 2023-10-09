@@ -39,15 +39,15 @@ jobs:
           php-version: '8.2'
           tools: phpstan, composer:2.5.6
 
+      - name: Setup MySQL
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: 8.1
+          mysql database: 'pipeline'
+          mysql root password: 'root'
+
       - name: Check software versions
         run: 'bash versions.sh'
-
-      #- name: Setup MySQL
-      #  uses: mirromutth/mysql-action@v1.1
-      #  with:
-      #    mysql version: 8.0
-      #    mysql database: 'pipeline'
-      #    mysql root password: 'root'
 
       #- name: Shutdown Ubuntu MySQL (SUDO)
       #  run: 'sudo service mysql stop' 
