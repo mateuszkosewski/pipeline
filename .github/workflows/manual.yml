@@ -48,7 +48,7 @@ jobs:
           mysql password: 'password'
 
       - name: Start MySQL
-        run: 'sudo service mysql start && sudo mysql -u root -ppassword'
+        run: 'sudo service mysql start && sudo mysql -u root'
 
       - name: Check software versions
         run: 'bash versions.sh'
