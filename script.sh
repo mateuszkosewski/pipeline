@@ -1,11 +1,36 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-version=$(php -v|grep --only-matching --perl-regexp "(PHP )\d+\.\\d+\.\\d+"|cut -c 5-7)
+# Get the currently installed PHP version
+php_version=$(php -v | grep -oP '(?<=PHP )(\d+\.\d+)')
 
-if [ "$version" == '8.2' ]; then
-echo 'Php version is correct'
+# Compare the installed PHP version with the required version
+if [[ "$php_version" == "8.2" ]]; then
+    echo "PHP 8.2 is installed."
 else
-echo "Php version is Wrong";
-exit 1;
+    echo "PHP 8.2 is not installed. Currently installed PHP version is $php_version."
+    exit 1;
 fi
 
+
+# Get the currently installed MySQL version
+mysql_version=$(mysql --version | grep -oP '(?<=Ver )(\d+\.\d+)')
+
+# Use regex matching to extract the MySQL version
+if [[ "$mysql_version" == "8.0" ]]; then
+    echo "MySQL version 8.0 is correct"
+else
+    echo "Unable to extract MySQL version."
+    exit 1;
+fi
+
+
+# Get NodeJS version
+nodejs_version=$(node -v| grep -oP '(\d+\.\d+)')
+
+# Use regex matching to extract the MySQL version
+if [[ "$nodejs_version" == "v18.17" ]]; then
+    echo "NodeJS version is correct 18.17"
+else
+    echo "Unable to extract NodeJS version."
+    exit 1;
+fi

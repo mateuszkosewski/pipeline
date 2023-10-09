@@ -50,16 +50,15 @@ jobs:
       - name: Setup nodejs
         uses: actions/setup-node@v2
         with:
-          node-version: 14
-      
-      - name: Check composer version
-        run: 'sudo cp foo.conf /etc/apache2/sites-available/foo.conf && sudo service apache2 start && sudo a2ensite foo.conf && sudo systemctl reload apache2 && sudo service apache2 status'
+          node-version: 18.17
 
-      - name: Check php version
-        run: bash script.sh
+      - name: Setup MySQL
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: '8.0'
+          mysql database: 'pipeline'
+          mysql user: 'developer'
+          mysql password: 'password'
 
-      - name: Check yarn version
-        run: yarn -v
-
-      - name: Check node version
-        run: node -v
+      - name: Check verions
+        run: 'sudo bash script.sh'
