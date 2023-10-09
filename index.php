@@ -3,7 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=cematic', 'root', 'roots');
+    $dbh = new PDO('mysql:host=localhost;dbname=pipeline', 'developer', 'password');
     print 'Connection correct!';
 } catch (PDOException $e) {
     print 'Failed to connect to DB!';
