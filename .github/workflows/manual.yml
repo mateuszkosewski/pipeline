@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-22.04
     services:
       mysql:
-        image: mysql:5.7.43
+        image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: no
-          MYSQL_DATABASE: pipeline
           MYSQL_ROOT_PASSWORD: root
         ports:
           - 32574:3306
@@ -23,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Sio
-        run: 'mysql --host 127.0.0.1 --port 32574 -uroot -ppassword -e "SHOW DATABASES"'
+        run: 'mysql --host 127.0.0.1 --port 32574 -uroot -proot -e "SHOW DATABASES"'
 
       #- name: Cache Composer dependencies
       #  id: cache-composer
