@@ -19,11 +19,13 @@ sudo cat resources/pipeline/virtual-host.conf | tee -a /etc/apache2/sites-availa
 # Restart apache
 sudo service apache2 start
 
-# Ping
-ping_status=$(curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com)
-if [[ ping_status == '200' ]]; then
-	echo 'Domain pipeline-local.com works!';
-else
-	echo 'Cannot connect to pipeline-local.com!';
-	exit 1;
+res=$(curl -s -w "%{http_code}" http://pipeline-local.com --data-binary '{"head":5}')
+body=${res::-3}
+status=$(printf "%s" "$res" | tail -c 3)
+
+if [ "$status" -ne "200" ]; then
+    echo "Error: HTTP repsonse is $status"
+    exit 1;
 fi
+    
+echo 'Connection is correct!'
