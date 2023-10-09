@@ -46,6 +46,9 @@ jobs:
           mysql database: 'pipeline'
           mysql root password: 'root'
 
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: 'sudo service mysql stop' 
+
       - name: Start MySQL
         run: 'sudo service mysql start && sudo mysql -u root -proot -e "show databases;"' 
 
