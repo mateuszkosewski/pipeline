@@ -27,8 +27,8 @@ sudo cat apache.conf | tee -a /etc/apache2/apache2.conf >> /dev/null
 sudo service apache2 start
 
 # Open 
-curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
-#curl http://pipeline-local.com
+#curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
+curl http://pipeline-local.com
 
 #cat /var/log/apache2/error.log
 #cat /etc/apache2/apache2.conf
