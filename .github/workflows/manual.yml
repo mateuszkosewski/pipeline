@@ -45,7 +45,7 @@ jobs:
         run: 'sudo service mysql start && sudo mysql -u root -proot -e "SELECT User FROM mysql.user;"' 
 
       - name: Start MySQL
-        run: 'mysql --version"' 
+        run: 'mysql --version' 
 
       #- name: Check software versions
       #  run: 'bash versions.sh'
