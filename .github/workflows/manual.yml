@@ -8,20 +8,16 @@ jobs:
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
-    services:
-      mysql:
-        image: mysql:5.7
-        env:
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 32574:3306
-
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      #- name: Checkout
+      #  uses: actions/checkout@v2
 
-      - name: Sio
-        run: 'mysql --host 127.0.0.1 --port 32574 -uroot -proot -e "SHOW DATABASES"'
+      #- name: Sio
+      #  run: 'mysql --host 127.0.0.1 --port 32574 -uroot -proot -e "SHOW DATABASES"'
+
+      - name: Kill current MySQL version
+        run: 'sudo bash mysql.sh'
 
       #- name: Cache Composer dependencies
       #  id: cache-composer
