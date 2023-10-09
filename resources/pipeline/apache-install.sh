@@ -25,6 +25,7 @@ status=$(printf "%s" "$res" | tail -c 3)
 
 if [ "$status" -ne "200" ]; then
     echo "Error: HTTP repsonse is $status"
+    echo $body
     exit 1;
 fi
     
