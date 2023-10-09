@@ -16,10 +16,13 @@ jobs:
       - name: Walsie
         uses: shogo82148/actions-setup-mysql@v1
         with:
-          mysql-version: "5.7"
+          mysql-version: "8.1"
+          root-password: 'root'
+          user: 'developer'
+          password: 'password'
 
       - name: Walsiedwa
-        run: mysql -uroot -e 'SELECT version()'
+        run: mysql -uroot -e 'SELECT User FROM mysql.user;'
 
       # - name: Setup MySQL
       #   uses: shogo82148/actions-setup-mysql@v1
