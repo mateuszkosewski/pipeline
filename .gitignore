@@ -5,6 +5,7 @@
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
+/config/packages/web_profiler.yaml
 /public/bundles/
 /var/
 /vendor/
