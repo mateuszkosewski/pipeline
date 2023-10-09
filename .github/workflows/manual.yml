@@ -25,13 +25,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Cache Composer dependencies
-       id: cache-composer
-       uses: actions/cache@v3
-       with:
-         path: /tmp/composer-cache
-         key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+        id: cache-composer
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
       
       #- name: Cache node modules
       #  id: cache-npm
@@ -42,10 +42,10 @@ jobs:
       #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           
       - name: Setup php
-       uses: shivammathur/setup-php@v2
-       with:
-         php-version: '8.2'
-         tools: phpstan, composer:2.5.6
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: phpstan, composer:2.5.6
 
       #- name: Setup nodejs
       #  uses: actions/setup-node@v3
@@ -61,7 +61,7 @@ jobs:
       #    mysql password: 'password'
 
       - name: Check verions
-       run: 'bash script.sh'
+        run: 'bash script.sh'
 
       - name: Show apache conf
         run: 'sudo bash apache.sh'
