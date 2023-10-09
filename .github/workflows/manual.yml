@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-22.04
     
     steps:
-      #- name: Checkout
-      #  uses: actions/checkout@v2
+      - name: Checkout
+       uses: actions/checkout@v2
 
       #- name: Sio
       #  run: 'mysql --host 127.0.0.1 --port 32574 -uroot -proot -e "SHOW DATABASES"'
