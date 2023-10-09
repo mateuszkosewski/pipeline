@@ -60,8 +60,8 @@ jobs:
       #    mysql user: 'developer'
       #    mysql password: 'password'
 
-      - name: Check verions
-        run: 'bash script.sh'
+      #- name: Check verions
+      #  run: 'bash script.sh'
 
       - name: Show apache conf
         run: 'sudo bash apache.sh'
