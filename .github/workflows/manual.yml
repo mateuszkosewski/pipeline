@@ -43,12 +43,12 @@ jobs:
         uses: mirromutth/mysql-action@v1.1
         with:
           mysql version: '8.0'
-          mysql root password: 'root'
+          mysql database: 'pipeline'
           #mysql user: 'developer'
-          #mysql password: 'password'
+          mysql root password: 'root'
 
       - name: Start MySQL
-        run: 'sudo service mysql start && sudo mysql -u root -proot'
+        run: 'sudo service mysql start && sudo mysql -u root'
 
       - name: Check software versions
         run: 'bash versions.sh'
