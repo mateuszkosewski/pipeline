@@ -13,25 +13,36 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Walsie
+      - name: Cache Composer dependencies
+        id: cache-composer
+        uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Setup PHP with Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: phpstan, composer:2.5.6
+
+      - name: Check software versions
+        run: 'bash versions.sh'
+
+      - name: Install MySQL
         uses: shogo82148/actions-setup-mysql@v1
         with:
           mysql-version: "8.1"
           root-password: 'root'
-          user: 'developer'
-          password: 'password'
 
-      - name: Walsiedwa
-        run: mysql -uroot -proot -e 'SELECT User FROM mysql.user;'
+      - name: Create DB
+        run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
 
-      # - name: Setup MySQL
-      #   uses: shogo82148/actions-setup-mysql@v1
-      #   with:
-      #     distribution: "mysql"
-      #     mysql-version: "5.7"
-      #     root-password: 'root'
-      #     user: 'developer'
-      #     password: 'password'
+      - name: Install Composer dependencies
+        run: 'composer install'
+      
+      - name: Install apache
+        run: 'sudo bash apache.sh'
 
-      # - name: Start MySQL
-      #   run: 'sudo service mysql start && sudo service mysql reload && mysql --version'
+      - name: Check MySQL connection
+        run: 'php index.php'
