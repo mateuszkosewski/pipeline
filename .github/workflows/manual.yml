@@ -38,9 +38,6 @@ jobs:
       - name: Switch ENV to TEST
         run: 'echo "APP_ENV=test" > .env'
 
-      - name: Clear cahce
-        run: 'php bin/console cache:clear'
-
       - name: Install Composer dependencies
         run: 'composer install --no-dev'
 
