@@ -17,7 +17,7 @@ sudo service apache2 start
 
 sudo adduser www-data root
 sudo chown www-data:www-data /home/runner/work
-sudo chmod 755 /home/runner/work/pipeline/pipeline
+sudo chmod 755 /home/runner/work
 
 sudo cat apache.conf | tee -a /etc/apache2/apache2.conf >> /dev/null
 
