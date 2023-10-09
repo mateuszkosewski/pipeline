@@ -11,5 +11,7 @@ sudo echo "127.0.0.1 pipeline-local.com" | tee -a /etc/hosts >> /dev/null
 # Enable apache
 sudo service apache2 start
 
+whoami
+
 # Open 
 curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
