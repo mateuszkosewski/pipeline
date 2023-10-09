@@ -39,6 +39,16 @@ jobs:
           php-version: '8.2'
           tools: phpstan, composer:2.5.6
 
+      - name: Setup MySQL
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: '8.0'
+          mysql database: 'pipeline'
+          mysql user: 'developer'
+          mysql password: 'password'
+
+      - name: Check MySQL connection
+        run: 'php index.php'
 
       - name: Check software versions
         run: 'bash versions.sh'
@@ -49,31 +59,12 @@ jobs:
       - name: Install apache
         run: 'sudo bash apache.sh'
 
-           #- name: Check verions
-      #  run: 'bash script.sh'
-
-      #- name: Cache node modules
-      #  id: cache-npm
-      #  uses: actions/cache@v3
-      #  with:
-      #    # npm cache files are stored in `~/.npm` on Linux/macOS
-      #    path: ~/.npm
-      #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          
-      
-
       #- name: Setup nodejs
       #  uses: actions/setup-node@v3
       #  with:
       #    node-version: '18.17.1'
 
-      #- name: Setup MySQL
-      #  uses: mirromutth/mysql-action@v1.1
-      #  with:
-      #    mysql version: '8.0'
-      #    mysql database: 'pipeline'
-      #    mysql user: 'developer'
-      #    mysql password: 'password'
+      
 
       #- name: Check verions
       #  run: 'bash script.sh'
