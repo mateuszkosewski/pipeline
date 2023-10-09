@@ -21,7 +21,7 @@ sudo chown www-data:www-data /home/runner/work/pipeline
 sudo chown www-data:www-data /home/runner/work/pipeline/pipeline
 
 #sudo chmod +x /home/
-#sudo chmod +x /home/runner/
+sudo chmod +x /home/runner/
 sudo chmod +x /home/runner/work/
 sudo chmod +x /home/runner/work/pipeline/
 sudo chmod +x /home/runner/work/pipeline/pipeline/
