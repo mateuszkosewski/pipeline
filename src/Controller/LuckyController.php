@@ -24,4 +24,10 @@ class LuckyController extends AbstractController
 
         return new Response('Product is ' . $product->getId() . ' with name ' . $product->getName() . ' and price ' . $product->getPrice());
     }
+
+    #[Route('/', name: 'app_index')]
+    public function index(): Response
+    {
+        return new Response('OK!');
+    }
 }
