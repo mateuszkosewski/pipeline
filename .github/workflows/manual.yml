@@ -32,7 +32,26 @@ jobs:
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Setup PHP with Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: phpstan, composer:2.5.6
+
+
+      - name: Check software versions
+        run: 'bash versions.sh'
+
+      - name: Install Composer dependencies
+        run: 'composer install'
       
+      - name: Install apache
+        run: 'sudo bash apache.sh'
+
+           #- name: Check verions
+      #  run: 'bash script.sh'
+
       #- name: Cache node modules
       #  id: cache-npm
       #  uses: actions/cache@v3
@@ -41,11 +60,7 @@ jobs:
       #    path: ~/.npm
       #    key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           
-      - name: Setup php
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          tools: phpstan, composer:2.5.6
+      
 
       #- name: Setup nodejs
       #  uses: actions/setup-node@v3
@@ -63,6 +78,5 @@ jobs:
       #- name: Check verions
       #  run: 'bash script.sh'
 
-      - name: Show apache conf
-        run: 'sudo bash apache.sh'
+      
      
