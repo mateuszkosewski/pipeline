@@ -13,7 +13,7 @@ fi
 
 
 # Get the currently installed MySQL version
-mysql_version=$(mysql --version | grep -oP '(?<=Ver )(\d+\.\d+)')
+mysql_version=$(mysql -uroot -proot -e 'SELECT version()'; | grep -oP '(?<=Ver )(\d+\.\d+)')
 
 # Use regex matching to extract the MySQL version
 if [[ "$mysql_version" == "8.0" ]]; then
