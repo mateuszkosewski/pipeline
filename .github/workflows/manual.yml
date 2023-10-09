@@ -11,13 +11,18 @@ jobs:
     
     steps:
       - name: Checkout
-       uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
-      #- name: Sio
-      #  run: 'mysql --host 127.0.0.1 --port 32574 -uroot -proot -e "SHOW DATABASES"'
+      - name: Setup MySQL
+        uses: mirromutth/mysql-action@v1.1
+        with:
+          mysql version: 5.7
+#          mysql database: 'pipeline'
+          mysql user: 'walsie'
+          mysql root password: 'root'
 
-      - name: Kill current MySQL version
-        run: 'sudo bash mysql.sh'
+      - name: Start MySQL
+        run: 'sudo service mysql start && sudo mysql -u root -proot -e "SELECT User FROM mysql.user;"' 
 
       #- name: Cache Composer dependencies
       #  id: cache-composer
