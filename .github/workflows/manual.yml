@@ -61,4 +61,4 @@ jobs:
           mysql password: 'password'
 
       - name: Check verions
-        run: 'sudo bash script.sh'
+        run: 'bash script.sh'
