@@ -13,14 +13,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup MySQL
+      - name: Walsie
         uses: shogo82148/actions-setup-mysql@v1
         with:
-          distribution: "mysql"
-          mysql-version: "5.7"
-          root-password: 'root'
-          user: 'developer'
-          password: 'password'
+          mysql-version: "8.0"
 
-      - name: Start MySQL
-        run: 'sudo service mysql start && sudo service mysql reload && mysql --version'
+      - name: Walsiedwa
+        run: mysql -uroot -e 'SELECT version()'
+
+      # - name: Setup MySQL
+      #   uses: shogo82148/actions-setup-mysql@v1
+      #   with:
+      #     distribution: "mysql"
+      #     mysql-version: "5.7"
+      #     root-password: 'root'
+      #     user: 'developer'
+      #     password: 'password'
+
+      # - name: Start MySQL
+      #   run: 'sudo service mysql start && sudo service mysql reload && mysql --version'
