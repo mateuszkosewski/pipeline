@@ -25,8 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          path: 'www'
+        #with:
+        #  path: 'www'
         
       #- name: Cache Composer dependencies
       #  id: cache-composer
@@ -66,5 +66,5 @@ jobs:
       #  run: 'bash script.sh'
 
       - name: Show apache conf
-        run: 'sudo bash www/apache.sh'
+        run: 'sudo bash apache.sh'
      
