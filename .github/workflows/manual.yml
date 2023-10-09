@@ -47,8 +47,8 @@ jobs:
       - name: Create DB schema from Symfony CLI
         run: 'php bin/console doctrine:schema:update --force'
 
-      - name: Cos
-        run: 'curl http://pipeline-local.com/product/1'
+      - name: Check PHP stan
+        run: 'vendor/bin/phpstan analyse src'
 
       - name: Notify slack success
         if: success()
