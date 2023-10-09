@@ -8,18 +8,6 @@ jobs:
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-22.04
-    # Service containers to run with `container-job`
-    #services:
-    #  # Label used to access the service container
-    #  redis:
-    #    # Docker Hub image
-    #    image: redis
-    #    # Set health checks to wait until redis has started
-    #    options: >-
-    #      --health-cmd "redis-cli ping"
-    #      --health-interval 10s
-    #      --health-timeout 5s
-    #      --health-retries 5
           
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -44,16 +32,20 @@ jobs:
         with:
           mysql version: 5.7
           mysql database: 'pipeline'
+          mysql user: 'walsie'
           mysql root password: 'root'
 
-      - name: Check software versions
-        run: 'bash versions.sh'
+      #- name: Check software versions
+      #  run: 'bash versions.sh'
 
       #- name: Shutdown Ubuntu MySQL (SUDO)
       #  run: 'sudo service mysql stop' 
 
-      #- name: Start MySQL
-      #  run: 'sudo service mysql start && sudo mysql -u root -proot -e "show databases;"' 
+      - name: Start MySQL
+        run: 'sudo service mysql start && sudo mysql -u root -proot -e "SELECT User FROM mysql.user;"' 
+
+      - name: Start MySQL
+        run: 'mysql --version"' 
 
       #- name: Check software versions
       #  run: 'bash versions.sh'
