@@ -3,9 +3,6 @@ name: Manual workflow
 on:
   push:
 
-env:
-  GITHUB_WORKSPACE: /var/www/pipeline
-
 jobs:
   # This workflow contains a single job called "greet"
   greet:
@@ -67,7 +64,5 @@ jobs:
       #  run: 'bash script.sh'
 
       - name: Show apache conf
-        #run: 'sudo bash apache.sh'
-        run: 'echo $GITHUB_WORKSPACE'
-
+        run: 'sudo bash apache.sh'
      
