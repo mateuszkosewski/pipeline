@@ -22,7 +22,8 @@ jobs:
           mysql root password: 'root'
 
       - name: Start MySQL
-        run: 'sudo mysql -u root -proot -e "SELECT VERSION();"' 
+        run: 'sudo service mysql start && sudo sercice mysql reload && mysql --version'
+        #sudo mysql -u root -proot -e "SELECT VERSION();"' 
 
       #- name: Cache Composer dependencies
       #  id: cache-composer
