@@ -27,6 +27,7 @@ sudo service apache2 reload
 #curl -s -o /dev/null -w "%{http_code}" http://pipeline-local.com
 #curl http://pipeline-local.com
 
-cat /etc/apache2/apache2.conf
+tail -f /var/log/apache2/error.log
+#cat /etc/apache2/apache2.conf
 
 #cd /home/runner/work/pipeline/pipeline && ls -l
