@@ -58,6 +58,9 @@ jobs:
       - name: Create DB schema from Symfony CLI
         run: 'php bin/console doctrine:schema:update --force'
 
+      - name: Run PHP unit tests
+        run: 'php bin/phpunit'
+
       - name: Check PHP stan
         run: 'vendor/bin/phpstan analyse src'
 
