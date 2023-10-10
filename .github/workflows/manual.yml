@@ -29,6 +29,11 @@ jobs:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
       - name: Setup PHP with Composer
         uses: shivammathur/setup-php@v2
         with:
@@ -40,6 +45,12 @@ jobs:
 
       - name: Install Composer dependencies
         run: 'composer install'
+
+      - name: NPM install
+        run: 'npm install'
+
+      - name: Build assets
+        run: 'npm run build'
 
       - name: Install Apache
         run: 'sudo bash resources/pipeline/apache-install.sh'
