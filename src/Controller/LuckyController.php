@@ -20,6 +20,7 @@ class LuckyController extends AbstractController
         $entityManager->persist($product);
         $entityManager->flush();
 
+        /** @var Product $product */
         $product = $entityManager->getRepository(Product::class)->findOneBy(['id' => $productId]);
 
         return new Response('Product is ' . $product->getId() . ' with name ' . $product->getName() . ' and price ' . $product->getPrice());
