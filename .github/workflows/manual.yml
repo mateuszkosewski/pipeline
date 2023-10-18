@@ -69,7 +69,9 @@ jobs:
         run: 'vendor/bin/phpstan analyse src'
 
       - name: Check assets
-        run: 'bash resources/pipeline/assets-check'
+        run: |
+              yarn encore build
+              bash resources/pipeline/assets-check'
 
       - name: Notify slack success
         if: success()
