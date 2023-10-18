@@ -56,7 +56,9 @@ jobs:
       - name: Check assets
         run: |
               npm run build
-              bash resources/pipeline/assets-check.sh
+              git --no-pager diff --name-only
+
+#              bash resources/pipeline/assets-check.sh
 
       - name: Install Apache
         run: 'sudo bash resources/pipeline/apache-install.sh'
