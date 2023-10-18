@@ -68,6 +68,9 @@ jobs:
       - name: Check PHP stan
         run: 'vendor/bin/phpstan analyse src'
 
+      - name: Check assets
+        run: 'bash resources/pipeline/assets-check'
+
       - name: Notify slack success
         if: success()
         env:
