@@ -21,7 +21,7 @@ jobs:
           root-password: 'root'
 
       - name: Create Database
-        run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;' >> dev/null"
+        run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
 
       - name: Get Composer Cache Directory
         id: composer-cache
