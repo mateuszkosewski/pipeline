@@ -1,6 +1,6 @@
 #!/bin/bash
 
-UNCOMMITED_CHANGES=$(git --no-pager diff --name-only ../../public/build/)
+UNCOMMITED_CHANGES=$(git --no-pager diff --name-only)
 UNCOMMITED_CHANGES_LENGTH=${#UNCOMMITED_CHANGES}
 
 if (( ${UNCOMMITED_CHANGES_LENGTH} > 0 )); then
