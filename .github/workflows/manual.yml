@@ -53,8 +53,10 @@ jobs:
       - name: NPM install
         run: 'npm install'
 
-      - name: Build assets
-        run: 'npm run build'
+      - name: Check assets
+        run: |
+              npm run build
+              bash resources/pipeline/assets-check.sh
 
       - name: Install Apache
         run: 'sudo bash resources/pipeline/apache-install.sh'
@@ -67,11 +69,6 @@ jobs:
 
       - name: Check PHP stan
         run: 'vendor/bin/phpstan analyse src'
-
-      - name: Check assets
-        run: |
-              yarn encore build
-              bash resources/pipeline/assets-check'
 
       - name: Notify slack success
         if: success()
