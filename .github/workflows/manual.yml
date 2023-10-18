@@ -22,12 +22,15 @@ jobs:
       - name: Create Database
         run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
 
-      - name: Cache Composer dependencies
-        id: cache-composer
-        uses: actions/cache@v3
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+      
+      - uses: actions/cache@v3
         with:
-          path: vendor
-          key: ${{ runner.os }}-vendor-${{ hashFiles('**/composer.lock') }}
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - uses: actions/setup-node@v3
         with:
