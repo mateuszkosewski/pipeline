@@ -22,9 +22,6 @@ jobs:
       - name: Create Database
         run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
 
-      - name: Create cache directories
-        run: mkdir /tmp/cache/composer
-
       - name: Cache Composer dependencies
         id: cache-composer
         uses: actions/cache@v3
