@@ -29,7 +29,6 @@ class LuckyController extends AbstractController
     #[Route('/', name: 'app_index')]
     public function index(): Response
     {
-        print $this->getParameter('kernel.environment');
         return new Response('OK!');
     }
 }
