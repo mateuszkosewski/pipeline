@@ -16,7 +16,8 @@ jobs:
       # Install MySQL is skipped, because github action has 8.0 version as default
       # To look other versions - use package shogo82148/actions-setup-mysql@v1
       - name: Create Database
-        run: "mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
+        run: systemctl start mysql.service | 
+             mysql -uroot -proot -e 'CREATE DATABASE pipeline;'"
 
       - name: Get Composer Cache Directory
         id: composer-cache
