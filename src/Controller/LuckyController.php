@@ -11,7 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class LuckyController extends AbstractController
 {
-    #[Route('/product/{productId}', name: 'app_product')]
+    /**
+     * @Route("/path", name="action")
+     */
     public function number(EntityManagerInterface $entityManager, int $productId): Response
     {
         $product = new Product();
