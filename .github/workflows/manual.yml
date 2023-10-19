@@ -72,6 +72,9 @@ jobs:
       - name: Check PHP stan
         run: 'vendor/bin/phpstan analyse src'
 
+      - name: Check PHP Rector
+        run: 'vendor/bin/rector process src --dry-run'
+
       - name: Notify slack success
         if: success()
         env:
