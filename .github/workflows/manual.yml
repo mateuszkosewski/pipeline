@@ -33,9 +33,10 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - uses: actions/setup-node@v3
+      - name: Set NodeJS v20 
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '20.x'
           cache: 'npm'
 
       - name: Setup PHP with Composer
